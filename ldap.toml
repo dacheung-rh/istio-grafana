@@ -1,0 +1,28 @@
+[[servers]]
+host = "192.168.1.190"
+port = 389
+use_ssl = false
+start_tls = false
+ssl_skip_verify = true
+bind_dn = "CN=kane,CN=Users,DC=cheers,DC=local"
+search_filter = "(sAMAccountName=%s)"
+search_base_dns = ["cn=users,dc=cheers,dc=local"]
+bind_password = "${LDAP_ADMIN_PASSWORD}"
+
+[servers.attributes]
+name = "givenName"
+surname = "sn"
+username = "sAMAccountName"
+member_of = "memberOf"
+email =  "mail"
+
+[[servers.group_mappings]]
+# admin group
+group_dn = "CN=grafanaadmin,DC=cheers,DC=local"
+org_role = "Admin"
+grafana_admin = true
+
+[[servers.group_mappings]]
+# viewer group
+group_dn = "*"
+org_role = "Viewer"

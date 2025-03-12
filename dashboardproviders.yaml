@@ -1,0 +1,9 @@
+apiVersion: 1
+providers:
+- disableDeletion: false
+  folder: istio
+  name: istio
+  options:
+    path: /var/lib/grafana/dashboards/istio
+  orgId: 1
+  type: file
